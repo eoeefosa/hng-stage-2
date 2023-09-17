@@ -5,7 +5,7 @@ import '../model/cv_model.dart';
 class EditCVScreen extends StatefulWidget {
   final CvModel cvmodel;
 
-  const EditCVScreen(this.cvmodel, {super.key});
+  const EditCVScreen({required this.cvmodel, super.key});
 
   @override
   State<EditCVScreen> createState() => _EditCVState();
@@ -72,12 +72,14 @@ class _EditCVState extends State<EditCVScreen> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    widget.cvmodel.firstName = firstnameController.text;
-                    widget.cvmodel.lastName = lastnameController.text;
-                    widget.cvmodel.middleName = middlenameController.text;
-                    widget.cvmodel.slackUsername = slackUsernameController.text;
-                    widget.cvmodel.githubHandle = githubHandleController.text;
-                    widget.cvmodel.personalBio = personalbioController.text;
+                    widget.cvmodel.copyWith(
+                      firstName: firstnameController.text,
+                      lastName: lastnameController.text,
+                      middleName: middlenameController.text,
+                      slackUsername: slackUsernameController.text,
+                      githubHandle: githubHandleController.text,
+                      personalBio: personalbioController.text,
+                    );
                   });
                   Navigator.pop(context);
                 },

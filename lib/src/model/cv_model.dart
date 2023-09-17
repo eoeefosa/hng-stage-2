@@ -17,4 +17,21 @@ class CvModel {
     required this.githubHandle,
     required this.personalBio,
   });
+  CvModel copyWith({
+    String? firstName,
+    String? lastName,
+    String? middleName,
+    String? slackUsername,
+    String? githubHandle,
+    String? personalBio,
+  }) {
+    return CvModel(
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      middleName: middleName ?? this.middleName,
+      githubHandle: githubHandle ?? this.githubHandle,
+      personalBio: personalBio ?? this.personalBio,
+      slackUsername: slackUsername ?? this.slackUsername,
+    );
+  }
 }

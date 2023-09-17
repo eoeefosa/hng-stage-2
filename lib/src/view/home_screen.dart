@@ -1,4 +1,5 @@
 import 'package:cv_app/src/data/cvdata.dart';
+import 'package:cv_app/src/model/cv_model.dart';
 import 'package:cv_app/src/utils/screen_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -10,14 +11,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final CvModel cvdata = cvdatas;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mobile Cv Application"),
         centerTitle: false,
-        actions: const [],
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: "editcv",

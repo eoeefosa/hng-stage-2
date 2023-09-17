@@ -6,5 +6,11 @@ import 'src/view/edit_cv_screen.dart';
 
 final routes = <String, WidgetBuilder>{
   '/': (context) => const MyHomePage(),
-  '/editcv': (context) => EditCVScreen(cvdata),
+  '/editcv': (context) => EditCVScreen(cvmodel: cvdatas),
 };
+
+class AppRoute {
+  AppRoute._();
+  
+  
+}
