@@ -8,4 +8,4 @@ The Mobile CV App is a Flutter-based mobile application that allows users to cre
 
 - Create and edit your CV on the go.
 
-
+[APP DEMO](https://appetize.io/app/2t672hxpeohh6rvl6m34ugt2qi?device=pixel6&osVersion=12.0&scale=75)
