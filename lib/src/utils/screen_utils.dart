@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-
 class ScreenUtil {
   static late double screenWidth;
   static late double screenHeight;

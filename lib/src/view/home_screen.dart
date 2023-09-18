@@ -1,21 +1,31 @@
 import 'package:cv_app/src/data/cvdata.dart';
 import 'package:cv_app/src/model/cv_model.dart';
 import 'package:cv_app/src/utils/screen_utils.dart';
+import 'package:cv_app/src/view/edit_cv_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  const MyHomePage(
+      {super.key});
+  
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final CvModel cvdata = cvdatas;
+  
+  CvModel cvdata = cvdatas;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  void updateCvData(CvModel newCvData) {
+    setState(() {
+      cvdata = newCvData;
+    });
   }
 
   @override
@@ -33,7 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
         isExtended: true,
         clipBehavior: Clip.hardEdge,
         onPressed: () {
-          Navigator.pushNamed(context, "/editcv");
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) =>
+                  EditCVScreen(cvmodel: cvdata, updateCvData: updateCvData),
+            ),
+          );
         },
         child: const Icon(Icons.edit),
       ),
@@ -44,13 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              
               const ProfilePicture(),
               const SizedBox(height: 8),
               const Divider(),
               Text("Links",
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyLarge),
-              const SocialLinks(),
+              // const SocialLinks(),
               const SizedBox(height: 16),
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 0),

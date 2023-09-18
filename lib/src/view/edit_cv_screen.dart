@@ -4,8 +4,13 @@ import '../model/cv_model.dart';
 
 class EditCVScreen extends StatefulWidget {
   final CvModel cvmodel;
+  final Function(CvModel) updateCvData;
 
-  const EditCVScreen({required this.cvmodel, super.key});
+  const EditCVScreen({
+    required this.cvmodel,
+    super.key,
+    required this.updateCvData,
+  });
 
   @override
   State<EditCVScreen> createState() => _EditCVState();
@@ -65,25 +70,41 @@ class _EditCVState extends State<EditCVScreen> {
                 controller: githubHandleController,
                 decoration: const InputDecoration(labelText: 'GitHub Handle'),
               ),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text('PersonalBio'),
+              const SizedBox(
+                height: 16,
+              ),
               TextField(
                 controller: personalbioController,
-                decoration: const InputDecoration(labelText: 'PersonalBio'),
+                decoration: const InputDecoration(border: OutlineInputBorder()),
+                maxLines: 10,
+                // maxLength: null,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    widget.cvmodel.copyWith(
-                      firstName: firstnameController.text,
-                      lastName: lastnameController.text,
-                      middleName: middlenameController.text,
-                      slackUsername: slackUsernameController.text,
-                      githubHandle: githubHandleController.text,
-                      personalBio: personalbioController.text,
-                    );
-                  });
-                  Navigator.pop(context);
-                },
-                child: const Text('Save'),
+              const SizedBox(
+                height: 16,
+              ),
+              Center(
+                child: ElevatedButton(
+                  
+                  onPressed: () {
+                    setState(() {
+                      final updatedCvData = widget.cvmodel.copyWith(
+                        firstName: firstnameController.text,
+                        lastName: lastnameController.text,
+                        middleName: middlenameController.text,
+                        slackUsername: slackUsernameController.text,
+                        githubHandle: githubHandleController.text,
+                        personalBio: personalbioController.text,
+                      );
+                      widget.updateCvData(updatedCvData);
+                    });
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Save'),
+                ),
               ),
             ],
           ),
