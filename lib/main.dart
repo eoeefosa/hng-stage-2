@@ -1,7 +1,11 @@
+import 'package:cv_app/src/provider/cvprovider.dart';
+import 'package:cv_app/src/provider/themeprovider.dart';
 import 'package:cv_app/src/view/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  CvProvider().init();
+  ThemeProvider().init();
   runApp(const MainApp());
 }
 
@@ -21,7 +25,17 @@ class _MainAppState extends State<MainApp> {
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
       darkTheme: ThemeData.dark(),
-      theme: ThemeData.dark(),
+      theme: ThemeProvider().currenttheeme()
+          ? ThemeData.dark()
+          : ThemeData.light(),
     );
   }
 }
+
+// class AppRoutes {
+//   AppRoutes._();
+//   static const routes={
+//     '/': (context) => const MyHomePage(),
+//         '/editcv': (context) => const MyGitHubWebView(),
+//   }
+// }
